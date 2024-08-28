@@ -7,7 +7,9 @@ function PageNav() {
     <nav className={styles.nav}>
       <ul>
         <li>
-          <Logo />
+          <NavLink to={'/product'}>
+            <Logo />
+          </NavLink>
         </li>
         <li>
           <NavLink to={'/product'}>Product</NavLink>
