@@ -49,7 +49,7 @@ function CitiesProvider({ children }) {
         headers: { 'Content-Type': 'application.json' },
       });
       const data = await res.json();
-      console.log(data);
+      createCity((cities) => [...cities, data]);
     } catch {
       throw new Error('error posting data');
     } finally {
