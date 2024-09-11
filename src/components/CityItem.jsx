@@ -6,7 +6,6 @@ import { useCities } from '../contexts/CitiesContext';
 function CityItem({ city }) {
   const { currentCity } = useCities();
   const { emoji, cityName, date, id, position } = city;
-  console.log('CURRENT', currentCity);
 
   const formatDate = (date) =>
     new Intl.DateTimeFormat('en', {

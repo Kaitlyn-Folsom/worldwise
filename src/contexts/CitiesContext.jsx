@@ -40,6 +40,23 @@ function CitiesProvider({ children }) {
     }
   }
 
+  async function createCity(newCity) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/cities`, {
+        method: 'POST',
+        body: JSON.stringify(newCity),
+        headers: { 'Content-Type': 'application.json' },
+      });
+      const data = await res.json();
+      console.log(data);
+    } catch {
+      throw new Error('error posting data');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <CitiesContext.Provider
       value={{
@@ -47,6 +64,7 @@ function CitiesProvider({ children }) {
         isLoading,
         currentCity,
         getCity,
+        createCity,
       }}
     >
       {children}
@@ -57,7 +75,7 @@ function CitiesProvider({ children }) {
 function useCities() {
   const context = useContext(CitiesContext);
 
-  if (context === undefined) throw new Error('Citiescontext not found');
+  if (context === undefined) throw new Error('Cities context not found');
   return context;
 }
 
