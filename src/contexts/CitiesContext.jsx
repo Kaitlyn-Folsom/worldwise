@@ -46,10 +46,11 @@ function CitiesProvider({ children }) {
       const res = await fetch(`${BASE_URL}/cities`, {
         method: 'POST',
         body: JSON.stringify(newCity),
-        headers: { 'Content-Type': 'application.json' },
+        headers: { 'Content-Type': 'application/json' },
       });
       const data = await res.json();
-      createCity((cities) => [...cities, data]);
+      console.log(data);
+      setCities((cities) => [...cities, data]);
     } catch {
       throw new Error('error posting data');
     } finally {
