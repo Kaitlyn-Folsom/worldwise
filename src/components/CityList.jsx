@@ -7,8 +7,6 @@ import { useCities } from '../contexts/CitiesContext';
 
 function CityList() {
   const { cities, isLoading } = useCities();
-  console.log('loading', isLoading);
-  console.log(cities);
   if (isLoading) return <Spinner />;
 
   if (!cities.length) return <Message message={'Add you first city by clicking a city on the map'} />;
